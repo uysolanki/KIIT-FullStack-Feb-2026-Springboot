@@ -3,9 +3,14 @@ package com.kiit.lms.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kiit.lms.model.Product;
+import com.kiit.lms.model.Rating;
 import com.kiit.lms.model.Student;
 import com.kiit.lms.service.StudentService;
 
@@ -56,4 +61,6 @@ public class StudentController {
 		
 		return  new ResponseEntity<Student>(studentService.addStudent1(s1),HttpStatus.CREATED);	
 	}
+	
+	
 }
