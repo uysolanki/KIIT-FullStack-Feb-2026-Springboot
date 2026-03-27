@@ -3,6 +3,7 @@ package com.kiit.lms.model;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +28,10 @@ public class Product {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 	    public Integer id;
+		
+		@Column(nullable = false)
 	    public String title;
+		
 	    public double price;
 	    public String description;
 	    public String category;

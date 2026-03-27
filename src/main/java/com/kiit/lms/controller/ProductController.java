@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.kiit.lms.model.Product;
 import com.kiit.lms.model.Rating;
 import com.kiit.lms.service.ProductService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -146,8 +148,28 @@ public class ProductController {
 		return  new ResponseEntity<Product>(savedPrduct,HttpStatus.CREATED);	
 	}
 	
+	
+//	@PostMapping("/add-product-by-dto")
+//	public ResponseEntity<?> addProductByDTO(@Valid @RequestBody ProductDTO productDto,
+//			BindingResult bindingResult) {
+//
+//		if (bindingResult.hasErrors()) 
+//		{
+//			List<APIError> errors = new ArrayList<>();
+//			for (FieldError error : bindingResult.getFieldErrors()) 
+//			{
+//				APIError apiError = new APIError(error.getDefaultMessage(), error.getField(), error.getRejectedValue());
+//				errors.add(apiError);
+//			}
+//			return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+//		}
+//
+//		ProductDTO savedPrduct = productService.addProductByDTO(productDto);
+//		return new ResponseEntity<ProductDTO>(savedPrduct, HttpStatus.CREATED);
+//	}
+//	
 	@PostMapping("/add-product-by-dto")
-	public ResponseEntity<ProductDTO> addProductByDTO(@RequestBody ProductDTO productDto)
+	public ResponseEntity<ProductDTO> addProductByDTO(@Valid @RequestBody ProductDTO productDto)
 	{		
 		ProductDTO savedPrduct=productService.addProductByDTO(productDto);
 		return  new ResponseEntity<ProductDTO>(savedPrduct,HttpStatus.CREATED);	
