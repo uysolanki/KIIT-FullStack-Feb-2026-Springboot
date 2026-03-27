@@ -1,5 +1,7 @@
 package com.kiit.lms.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kiit.lms.model.Product;
 import com.kiit.lms.model.Rating;
-import com.kiit.lms.model.Student;
 import com.kiit.lms.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -141,6 +142,12 @@ public class ProductController {
 	{		
 		Product savedPrduct=productService.addProduct(product);
 		return  new ResponseEntity<Product>(savedPrduct,HttpStatus.CREATED);	
+	}
+	
+	@PostMapping("/add-product-list")
+	public ResponseEntity<List<Product>> addProductList(@RequestBody List<Product> products)
+	{		
+		return  new ResponseEntity<List<Product>>(productService.addProducts(products),HttpStatus.CREATED);	
 	}
 }
 

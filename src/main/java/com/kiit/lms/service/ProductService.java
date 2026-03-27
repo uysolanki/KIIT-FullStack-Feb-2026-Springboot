@@ -1,5 +1,7 @@
 package com.kiit.lms.service;
 
+import java.util.List;
+
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class ProductService {
 	private final ProductRepository productRepository;
 	public Product addProduct(Product product) {
 		return productRepository.save(product);
+	}
+	public List<Product> addProducts(List<Product> products) {
+		return productRepository.saveAll(products);
 	}
 
 }
