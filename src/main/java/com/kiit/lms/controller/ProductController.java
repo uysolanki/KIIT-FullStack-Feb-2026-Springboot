@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kiit.lms.dto.ProductDTO;
 import com.kiit.lms.model.Product;
 import com.kiit.lms.model.Rating;
 import com.kiit.lms.service.ProductService;
@@ -143,6 +144,13 @@ public class ProductController {
 	{		
 		Product savedPrduct=productService.addProduct(product);
 		return  new ResponseEntity<Product>(savedPrduct,HttpStatus.CREATED);	
+	}
+	
+	@PostMapping("/add-product-by-dto")
+	public ResponseEntity<ProductDTO> addProductByDTO(@RequestBody ProductDTO productDto)
+	{		
+		ProductDTO savedPrduct=productService.addProductByDTO(productDto);
+		return  new ResponseEntity<ProductDTO>(savedPrduct,HttpStatus.CREATED);	
 	}
 	
 	@PostMapping("/add-product-list")
