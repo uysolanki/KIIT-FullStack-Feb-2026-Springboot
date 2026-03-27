@@ -22,7 +22,7 @@ public class Product {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-	    public int id;
+	    public Integer id;
 	    public String title;
 	    public double price;
 	    public String description;

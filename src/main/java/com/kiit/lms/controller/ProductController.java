@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -134,4 +135,28 @@ public class ProductController {
 		Product savedPrduct=productService.addProduct(product);
 		return  new ResponseEntity<Product>(savedPrduct,HttpStatus.CREATED);	
 	}
+	
+	@PostMapping("/add-product-by-body")
+	public ResponseEntity<Product> addProductByRequestBody(@RequestBody Product product)
+	{		
+		Product savedPrduct=productService.addProduct(product);
+		return  new ResponseEntity<Product>(savedPrduct,HttpStatus.CREATED);	
+	}
 }
+
+
+/*
+{
+"id": 3,
+"title": "Mens Casual Premium Slim Fit T-Shirts",
+"price": 22.3,
+"description": "Slim-fitting style, contrast raglan long sleeve",
+"category": "men's clothing",
+"image": "testimage",
+"rating": {
+    "ratingId": 3,
+    "rate": 4.1,
+    "count": 259
+}
+}
+*/
