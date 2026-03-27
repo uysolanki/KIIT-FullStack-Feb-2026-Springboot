@@ -21,5 +21,11 @@ public class ProductService {
 	public List<Product> addProducts(List<Product> products) {
 		return productRepository.saveAll(products);
 	}
+	public Product getProduct(int prodId) {
+		return productRepository.findById(prodId).get();
+	}
+	public List<Product> getProductByCategory(String prodCategory) {
+		return productRepository.findByCategory(prodCategory);
+	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -148,6 +149,18 @@ public class ProductController {
 	public ResponseEntity<List<Product>> addProductList(@RequestBody List<Product> products)
 	{		
 		return  new ResponseEntity<List<Product>>(productService.addProducts(products),HttpStatus.CREATED);	
+	}
+	
+	@GetMapping("/findproduct/{pid}")
+	public ResponseEntity<Product> getProduct(@PathVariable("pid") int prodId)
+	{		
+		return  new ResponseEntity<Product>(productService.getProduct(prodId),HttpStatus.OK);	
+	}
+	
+	@GetMapping("/findproductbycategory/{pcat}")
+	public ResponseEntity<List<Product>> findproductbycategory(@PathVariable("pcat") String prodCategory)
+	{		
+		return  new ResponseEntity<List<Product>>(productService.getProductByCategory(prodCategory),HttpStatus.OK);	
 	}
 }
 
