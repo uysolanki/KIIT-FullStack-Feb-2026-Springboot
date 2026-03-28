@@ -11,4 +11,6 @@ import com.kiit.lms.model.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	List<Product> findByCategory(String s);
+	
+	List<Product> findByPriceGreaterThan(double d);
 }

@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -191,6 +192,25 @@ public class ProductController {
 	public ResponseEntity<List<Product>> findproductbycategory(@PathVariable("pcat") String prodCategory)
 	{		
 		return  new ResponseEntity<List<Product>>(productService.getProductByCategory(prodCategory),HttpStatus.OK);	
+	}
+	
+	@GetMapping("/findproductbyprice/{prodPrice}")
+	public ResponseEntity<List<Product>> findProductByPrice(@PathVariable double prodPrice)
+	{		
+		return  new ResponseEntity<List<Product>>(productService.findProductByPrice(prodPrice),HttpStatus.OK);	
+	}
+	
+	@DeleteMapping("/deleteproduct/{prodId}")
+	public ResponseEntity<String> deleteProduct(@PathVariable int prodId)
+	{		
+		productService.deleteProduct(prodId);
+		return  new ResponseEntity<String>("Product Deleted with ID "+prodId,HttpStatus.OK);	
+	}
+	
+	@PutMapping("/updateproduct/{prodId}")
+	public ResponseEntity<ProductDTO> updateProduct(@PathVariable int prodId, @Valid @RequestBody ProductDTO newValues )
+	{		
+		return  new ResponseEntity<ProductDTO>(productService.updateProduct(prodId,newValues),HttpStatus.OK);	
 	}
 }
 

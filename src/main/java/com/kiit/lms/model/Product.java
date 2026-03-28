@@ -43,7 +43,7 @@ public class Product {
 	    
 	    private LocalDateTime createdAt;
 		
-	       private LocalDateTime modifiedAt;
+	    private LocalDateTime modifiedAt;
 		
 		@PrePersist
 		protected void atCreation()
