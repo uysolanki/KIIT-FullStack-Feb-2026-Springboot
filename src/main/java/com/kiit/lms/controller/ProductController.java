@@ -19,6 +19,7 @@ import com.kiit.lms.model.Product;
 import com.kiit.lms.model.Rating;
 import com.kiit.lms.service.ProductService;
 
+//import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -142,6 +143,7 @@ public class ProductController {
 		return  new ResponseEntity<Product>(savedPrduct,HttpStatus.CREATED);	
 	}
 	
+	//@Operation(summary = "Saves single Product", description = "Save a new product")
 	@PostMapping("/add-product-by-body")
 	public ResponseEntity<Product> addProductByRequestBody(@RequestBody Product product)
 	{		
@@ -210,7 +212,7 @@ public class ProductController {
 	@PutMapping("/updateproduct/{prodId}")
 	public ResponseEntity<ProductDTO> updateProduct(@PathVariable int prodId, @Valid @RequestBody ProductDTO newValues )
 	{		
-		return  new ResponseEntity<ProductDTO>(productService.updateProduct(prodId,newValues),HttpStatus.OK);	
+		return new ResponseEntity<ProductDTO>(productService.updateProduct(prodId,newValues),HttpStatus.OK);	
 	}
 }
 

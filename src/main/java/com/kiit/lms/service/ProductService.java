@@ -75,5 +75,8 @@ public class ProductService {
 		return modelMapper.map(productRepository.save(productFromDB), ProductDTO.class);
 		
 	}
+	public List<Product> getAllProducts() {
+		return productRepository.findAll();
+	}
 
 }
